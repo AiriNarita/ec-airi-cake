@@ -47,4 +47,7 @@ Rails.application.routes.draw do
       resources :orders, only: [:show, :update]
       resources :order_details, only: [:update]
     end
+
+  # 既存のルーティングに加えて、以下を追加
+  get '/routes.csv', to: 'routes#csv'
 end
