@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection do
-        delete "all_destroy"=>"cart_items#all_destroy"  #ここ不安
+        delete "all_destroy"=>"cart_items#all_destroy"  
       end
     end
   
@@ -44,8 +44,9 @@ Rails.application.routes.draw do
       resources :products, except: [:destroy]
       resources :genres, only: [:index, :create, :edit, :update]
       resources :customers, only: [:index, :show, :edit, :update] 
-      resources :orders, only: [:show, :update]
-      resources :order_details, only: [:update]
+      resources :orders, only: [:show, :update] do
+        resources :order_details, only: [:update]
+      end
     end
 
   # 既存のルーティングに加えて、以下を追加
