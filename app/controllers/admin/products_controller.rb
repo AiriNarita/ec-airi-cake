@@ -31,5 +31,11 @@ class Admin::ProductsController < ApplicationController
   def update
   end
 
+  private
+
+  def product_params
+    params.require(:product).permit(:image, :genre_id, :name, :description, :tax_excluded_price, :is_active)
+  end
+
   
 end
